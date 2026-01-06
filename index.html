@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multi Step Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+}
+.form-box {
+    width: 600px;
+    border: 2px solid #999;
+    padding: 30px;
+    margin: 40px auto;
+}
+h2, legend {
+    font-size: 20px;
+    font-weight: bold;
+}
+label {
+    display: block;
+    margin-top: 20px;
+}
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
+    width: 70%;
+    padding: 8px;
+    margin-top: 5px;
+}
+textarea {
+    height: 80px;
+    resize: none;
+}
+.cnic {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.cnic input {
+    width: 50px;
+    text-align: center;
+}
+.radio-group {
+    margin-top: 10px;
+}
+.radio-group label {
+    margin-right: 15px;
+}
+.checkbox {
+    margin-top: 15px;
+}
+.btn-group {
+    margin-top: 30px;
+}
+.btn {
+    background: #0b3c5d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+fieldset {
+    display: none;
+    border: none;
+}
+fieldset.active {
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+
+<fieldset id="step1" class="active">
+<legend>Account</legend>
+<label>Email Address:</label>
+<input type="email" placeholder="Enter Email">
+<label>Password:</label>
+<input type="password" placeholder="Enter Password">
+<label>Confirm Password:</label>
+<input type="password" placeholder="Confirm Password">
+<div class="btn-group">
+<button class="btn" onclick="prevStep(1)">◀ Back</button>
+<button class="btn" onclick="nextStep(2)">Next ▶</button>
+</div>
+</fieldset>
+
+<fieldset id="step2">
+<legend>Personal Detail</legend>
+<label>First Name:</label>
+<input type="text" placeholder="Enter First Name">
+<label>Last Name:</label>
+<input type="text" placeholder="Enter Last Name">
+<label>CNIC:</label>
+<div class="cnic">
+<input maxlength="5">
+<span>-</span>
+<input maxlength="7">
+<span>-</span>
+<input maxlength="1">
+</div>
+<label>Social Link:</label>
+<input type="text" placeholder="Enter Facebook/Linkedin profile link">
+<div class="btn-group">
+<button class="btn" onclick="prevStep(1)">◀ Back</button>
+<button class="btn" onclick="nextStep(3)">Next ▶</button>
+</div>
+</fieldset>
+
+<fieldset id="step3">
+<legend>Review</legend>
+<label>How did you hear about us?</label>
+<select>
+<option>Select your option</option>
+<option>Facebook</option>
+<option>Google</option>
+<option>Friend</option>
+</select>
+<label>Would you visit again?</label>
+<div class="radio-group">
+<label><input type="radio" name="visit"> Yes</label>
+<label><input type="radio" name="visit"> No</label>
+<label><input type="radio" name="visit"> Maybe</label>
+</div>
+<label>Comments:</label>
+<textarea placeholder="Enter your comments here..."></textarea>
+<label>Documents:</label>
+<input type="file">
+<div class="checkbox">
+<input type="checkbox" checked>
+<span> Sign me up for email updates</span>
+</div>
+<div class="btn-group">
+<button class="btn" onclick="prevStep(2)">◀ Back</button>
+<button class="btn">Submit ▶</button>
+</div>
+</fieldset>
+
+</div>
+
+<script>
+function nextStep(step){
+    document.querySelectorAll("fieldset").forEach(f=>f.classList.remove("active"))
+    document.getElementById("step"+step).classList.add("active")
+}
+function prevStep(step){
+    document.querySelectorAll("fieldset").forEach(f=>f.classList.remove("active"))
+    document.getElementById("step"+step).classList.add("active")
+}
+</script>
+
+</body>
+</html>
